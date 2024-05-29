@@ -1,10 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { useRef, useState, useEffect, useMemo } from "react";
-// import { useStore, useSelector } from "react-redux";
-// import * as dbUtils from "./datebase/index";
-// import { helper, random } from "./utils/index";
+import { useRef, useState, useEffect } from "react";
 import "./App.css";
-// import { Pagination, Empty } from "antd";
 import Material from "./views/material/index.jsx";
 import DragAble from "./views/dragable/index.jsx";
 
