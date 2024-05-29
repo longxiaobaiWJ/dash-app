@@ -1,0 +1,69 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.material {
+  display: flex;
+  gap: 20px;
+}
+
+.panel {
+  cursor: pointer;
+  width: 240px;
+  height: 180px;
+}
+
+.layout {
+  overflow: auto;
+  margin-top: 12px;
+  padding: 12px;
+  width: 810px;
+  min-height: 480px;
+  border: 2px solid salmon;
+  border-radius: 6px;
+}
+
+.track {
+  overflow: auto;
+  display: flex;
+  margin-bottom: 20px;
+  width: auto;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  min-width: 1800px;
+}
+
+.is-frames-container {
+  display: flex;
+}
+
+.slider {
+  cursor: pointer;
+  display: flex;
+  width: 10px;
+  height: 100%;
+}
+
+.layer {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #fff;
+}
+
+.frame {
+  display: flex;
+}
+
+.frame-item {
+  height: 80px;
+  width: 120px;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  -webkit-user-drag: none;
+}
