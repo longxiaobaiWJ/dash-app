@@ -144,9 +144,7 @@ function DragAble(props) {
       const childVal = cachedVal.values[currentVal.index];
       values[parent].values.splice(currentVal.index, 1);
 
-      if (values[parent].values.length === 0) {
-        values.splice(parent, 1);
-      }
+
 
       if (indexVal) {
         values[indexVal].values.push(childVal);
@@ -156,6 +154,11 @@ function DragAble(props) {
           values: [childVal]
         })
       }
+
+      if (values[parent].values.length === 0) {
+        values.splice(parent, 1);
+      }
+
       setCurrentVal(null);
       setFrames([...values]);
     }
