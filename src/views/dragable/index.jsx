@@ -69,9 +69,9 @@ function CreateFrame(props) {
   return (<div className='track receiver' data-index={props.index} onMouseMove={onMouseMove} onMouseUp={onMouseUp} onMouseLeave={onMouseLeave}>
     {
       props.list.map((val, index) => {
-        return (<div className='is-frames-container' draggable key={val.id} data-parent={props.index} data-index={index} onDragStart={onDragStart}>
+        return (<div className='is-frames-container' key={val.id} >
           <span className='slider' data-length={val.duration} data-id={val.id} data-direction="start" data-index={props.index} onMouseDown={onMouseDown} />
-          <div className='layer'>
+          <div className='layer' draggable data-parent={props.index} data-index={index} onDragStart={onDragStart}>
             <div className='title'>
               <span>{val.title}</span>
               <span>-</span>
@@ -94,7 +94,8 @@ function CreateFrame(props) {
 
 function DragAble(props) {
   const [currentVal, setCurrentVal] = useState(null);
-  const [thVal, setThVal] = useState(10)
+  // eslint-disable-next-line
+  const [thVal, setThVal] = useState(10);
   const [frames, setFrames] = useState([]);
 
   const onDragOver = (e) => {
@@ -112,7 +113,7 @@ function DragAble(props) {
 
     if (target.duration) {
       helperCapure(target).then(list => {
-        setThVal(thVal + 1);
+        // setThVal(thVal + 1);
 
         const data = {
           currentSrc: target.currentSrc,
@@ -183,7 +184,7 @@ function DragAble(props) {
       currentSrc: currentSrc,
       duration: target.duration,
     }, start, finish).then(list => {
-      setThVal(thVal + 1);
+      // setThVal(thVal + 1);
       values[data.trackNo].values[index] = {
         currentSrc: target.currentSrc,
         title: getFileName(target.currentSrc),
@@ -203,13 +204,25 @@ function DragAble(props) {
     setCurrentVal(value);
   }
 
+  useEffect(() => {
+    console.log('x useEffect x');
+    // setInterval(() => {
+    //   setThVal((val) => val + 1);
+    // }, 2000);
+  }, []);
+
   return (
-    <div className='layout receiver' onDragOver={onDragOver} onDrop={onDrop}>
-      {
-        frames.map((val, index) => {
-          return <CreateFrame key={val.id} index={index} list={val.values} updateVal={updateFrameVal} setCurrentVal={updateIndexVal} />
-        })
-      }
+    <div>
+      <div>
+        <span>{thVal}</span>
+      </div>
+      <div className='layout receiver' onDragOver={onDragOver} onDrop={onDrop}>
+        {
+          frames.map((val, index) => {
+            return <CreateFrame key={val.id} index={index} list={val.values} updateVal={updateFrameVal} setCurrentVal={updateIndexVal} />
+          })
+        }
+      </div>
     </div>
   );
 }
